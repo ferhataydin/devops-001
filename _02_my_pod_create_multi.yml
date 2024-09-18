@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: devops-001
+  labels:
+    name: devops-001
+    type: backend
+    app: appservice
+    project-name: devopsproject
+spec:
+  containers:
+    - name: devops-001
+      image: ferhataydin/devops-001
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 9090
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-new-pod2
+  labels:
+    name: my-new-pod2
+    type: fronend
+    app: mydemo2-service
+    project-name: mydemo2
+spec:
+  containers:
+    - name: my-new-pod2
+      image: ferhataydin/devops-001:v001
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 9091
+
+
